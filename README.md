@@ -1,74 +1,78 @@
-# gta6-meme-x-01 starter
+# GTA 6: 13 Tahun vs 13 Menit — make.fun meme entry
 
-A working entry for the make.fun bounty "Post a GTA 6 meme on X": your AI agent makes a meme about GTA 6 with make.fun's
-ghost mascot, logo or name in the picture, it is posted on X from a public account with make.fun (a link or written
-out) and/or a tag of @makefunai and your play code in the post, telling people they can earn money on make.fun, and
-this repository hands in the post's address. An AI judge compares the posts two at a time, and the top 50 share $500.
+Entri untuk bounty make.fun **gta6-meme-x-01** ("Post a GTA 6 meme on X", total hadiah
+$500, deadline 23 Nov 2026 21:00 WIB). Akun make.fun: **@vivid-owl-21**, play code:
+`makefun-gerbil-violin-falconer`.
 
-make.fun is a site where people and their AI agents build things, enter them in paid competitions (bounties) and earn
-real money when they win.
+## Memenya
 
-Start your agent's session at or after the bounty's opening and make the meme in it: a session that began before the
-opening cannot be entered.
+Meme dua panel, 1024×1024 PNG, dibuat di session ini (setelah bounty dibuka 19 Nov 2026
+21:00 WIB):
 
-## The post is the entry
+- **Panel atas — "AKU: NUNGGU GTA 6 / SELAMA 13 TAHUN":** seorang gamer sudah jadi
+  tengkorak ber-hoodie di kursi gaming, masih memegang controller. Di dinding: poster
+  sunset Vice City yang memudar dan kalender yang tahun-tahunnya dicoret semua,
+  sarang laba-laba, tumpukan kaleng minuman energi. Tiga belas tahun sejak GTA V —
+  yang nunggu keburu jadi fosil duluan.
+- **Panel bawah — "AGEN AI-KU: 13 MENIT. / SUDAH DIBAYAR DI MAKE.FUN":** robot agen AI
+  yang imut merayakan di jalanan neon Vice City/Leonida saat uang dan koin emas
+  menghujani jalan. Di dalam scene-nya, berdiri di jalan basah yang memantulkan
+  neon, ada **ghost make.fun yang asli** — hantu putih bermata sparkle memegang koin
+  bintang magenta — bukan stiker tempel di pojok, tapi bagian dari adegannya.
 
-The house reads your post from X and the judge sees it as the house read it: its first picture, then its text. It
-ranks the posts on seven things, in order:
+Jokenya: yang nunggu GTA 6 itu manusia — 13 tahun dan belum juga main. Yang kerja
+buat make.fun itu agen AI — 13 menit, sudah dibayar beneran. Kontras yang sama
+inilah yang dijual teks postingannya.
 
-1. make.fun in the picture: its ghost, its logo or its name; a post with none of them loses to any post with one.
-2. Funny: a real joke a GTA fan gets in a second.
-3. About GTA 6 specifically, not a generic gaming joke with "GTA 6" pasted on.
-4. Sells make.fun: it makes a reader want to try make.fun and makes clear that people and their AI agents can earn
-   money there, in the meme's own voice; a bare link or tag with no pitch does this worse than a clever one.
-5. Short and readable: the caption reads at a glance and is spelled right.
-6. Original: not a stock caption reused word for word, not a repost of a known meme.
-7. A clean image, make.fun's ghost, logo or name worked into the scene.
+## Teks postingan X (draft)
 
-The post's text counts as part of the joke. Likes, reposts, replies and views never count. The post and the meme stay
-yours.
+> Nunggu GTA 6 selama 13 tahun. Agen AI-ku cuma nunggu 13 menit — dan sudah dibayar
+> beneran di make.fun. Kamu dan agen AI-mu juga bisa dapat uang beneran di sana:
+> https://make.fun/bounty/gta6-meme-x-01 @makefunai makefun-gerbil-violin-falconer
 
-## What the post must have
+Teksnya pendek (di bawah 1.100 byte yang dibaca juri), berisi joke-nya, ajakan mencoba
+make.fun (orang dan agen AI-nya bisa dapat uang beneran), link bounty, tag @makefunai,
+dan play code. Meme-nya sendiri diposting sebagai gambar pertama dari akun X publik
+@pejuangwor22.
 
-- Its picture shows make.fun: its mascot, the ghost of make.fun's logo, or make.fun's logo or its name
-  (https://make.fun/press/ has them, such as mark-1024.png and wordmark.svg), worked into the meme at any size, pose or
-  style, recognisably. A meme with none of them ranks below every meme that has one.
-- It is posted on X at or after the bounty opens and before the deadline, from a public X account (not protected).
-- Its text carries make.fun, as a link (this bounty's page, https://make.fun/bounty/gta6-meme-x-01, is a good one) or
-  written out, and/or a tag of `@makefunai`: either one passes. It also carries one of your play codes, `makefun-` and
-  three words. Once you are registered, `GET /api/competitions/gta6-meme-x-01/play-code` answers your code (`?n=0` to `?n=3` for your four; any
-  one passes).
-- Its first picture is the meme: a PNG, JPEG or WebP picture, not a GIF or a video. The judge sees it shrunk to fit
-  768 by 480 pixels (a square one at 480 by 480), so make any caption large; keep the post's text short.
-- No other account entered the same post first.
+## Cara meme dibuat
 
-Keep the post up and the account public until the results are out. Each submission may name a new post; your last
-submission before the deadline is your final entry.
+1. Dua scene digenerate AI (1024×1024, tanpa teks — teks hasil AI sering rusak):
+   adegan tengkorak gamer dan adegan robot agen di jalanan neon Vice City.
+2. Ghost make.fun diambil ASLI dari press kit resmi https://make.fun/press/
+   (`mark-1024.png`, 1024×1024) — bukan digambar ulang AI — supaya maskotnya
+   dikenali persis.
+3. Script `composite.py` (di luar repo ini, di folder kerja) menyusun semuanya dengan
+   PIL: kedua scene dipotong jadi panel 1024×512, ghost di-resize proporsional ke
+   300 px, dimiringkan sedikit, diberi bayangan kontak, lalu ditempel KE DALAM panel
+   bawah; caption digambar dengan DejaVu Sans Bold ukuran besar + outline hitam +
+   band gelap tembus pandang, sehingga tetap terbaca saat gambar dikecilkan ke
+   480×480 (ukuran yang dilihat juri).
+4. Verifikasi (dilakukan 19 Nov 2026, sebelum commit ini):
+   - Meme 1024×1024 dilihat langsung: ghost make.fun besar dan dikenali (hantu
+     putih, mata sparkle, koin bintang magenta), kedua caption terbaca jelas,
+     tidak ada elemen yang terpotong.
+   - Downscale 480×480 (ukuran yang dilihat juri) dicek juga: ghost + kedua
+     caption tetap dikenali dan terbaca.
+   - `main.ts` dijalankan seperti grader dari working directory asing
+     (`cd /tmp`, `MAKEFUN_BOT_DIR=<repo> MAKEFUN_OUTPUT_DIR=/tmp/out`):
+     exit 0, `out/POST.json` sama byte dengan `POST.json` repo (masih
+     placeholder — benar untuk fase ini).
+   - Draft teks postingan: 244 byte, di bawah batas ~1.100 byte yang dibaca juri.
 
-## What to change
+## Yang ada di repo ini
 
-`POST.json` holds the post's address:
+- `main.ts` — program entri (starter, tidak diubah): menyalin `POST.json` ke
+  `/output/POST.json`. Dijalankan seperti grader dari working directory asing dan
+  lolos (exit 0, `out/POST.json` sama byte dengan `POST.json` repo).
+- `POST.json` — masih placeholder `{"url": "https://x.com/<handle>/status/<id>"}`.
+  Diisi alamat postingan X yang asli setelah Nanang memposting meme dari
+  @pejuangwor22; baru setelah itu entri bisa di-submit.
+- `README.md` — dokumen ini.
+- `LICENSE` — MIT.
 
-    {"url": "https://x.com/<handle>/status/<id>"}
+## Status
 
-Replace the placeholder with your post's address, as X shows it: `https://x.com/<handle>/status/<id>` (or the same
-on twitter.com), the id digits only. The placeholder as it stands is no post's address, so the gate refuses the starter unchanged: that is on
-purpose, since a starter that passed would need no post at all.
-
-`main.ts` copies `POST.json` from this repository to `/output/POST.json`, which is all the program has to do. Leave
-it as it is unless you have a reason to change it.
-
-## Run it locally
-
-    mkdir -p out && MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
-
-`out/POST.json` is then byte for byte this directory's `POST.json`.
-
-## Before you submit
-
-From the kit's own directory, run the site's pre-submit checks on this repository and the transcripts you will upload:
-
-    node cli/makefun.mjs check --kit . --repo <this repository> --transcripts transcripts.tar.gz
-
-The kit's `RULES.txt` gives the bundling and submit commands, and the competition's page gives the dates and the
-rewards. Read `AGENT.md` for the one-page version of the task.
+Meme selesai (`meme.png`, 1024×1024) dan draft teks postingan siap. Menunggu:
+Nanang posting meme + teks di atas dari @pejuangwor22, lalu `POST.json` diisi URL
+postingannya dan entri di-submit oleh koordinator.
