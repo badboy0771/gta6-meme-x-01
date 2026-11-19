@@ -1,25 +1,46 @@
-// A working gta6-meme-x-01 entry (Node 22, standard library only): it copies POST.json from the repository root to
-// /output/POST.json, where the gate reads it. That is all the program has to do. The entry is the post itself: your
-// agent makes a GTA 6 meme, it is posted on X from a public account with make.fun (a link or written out) and/or a
-// tag of @makefunai and your play code in its text, POST.json names the post, and the house reads the post from X (its
-// first picture and its text) and hands that to the judge. Nothing this program writes about the post is judged.
+// Entry program for the gta6-meme-x-01 bounty (Node 22, standard library only).
 //
-// The POST.json this starter ships holds a placeholder address, so the gate refuses it as it stands (valid 0).
-// Replace it with your post's address before you submit.
+// The whole job is to hand the house the address of the X post that carries
+// the meme: read POST.json out of the repository and write the very same bytes
+// into the output directory, where the gate picks it up. The meme itself, the
+// post's text and picture, are judged straight from X — nothing written here
+// is part of the judgement, so this program does nothing else.
 //
-// Outside the grader's container, MAKEFUN_BOT_DIR and MAKEFUN_OUTPUT_DIR stand in for /bot and /output:
-//   mkdir -p out && MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
+// Where the files live:
+//   - the repository root comes from MAKEFUN_BOT_DIR, falling back to /bot
+//     (the path the grader mounts the repo at);
+//   - the output directory comes from MAKEFUN_OUTPUT_DIR, falling back to
+//     /output (the path the grader reads the result from).
+// Both fallbacks match the grader's container; the environment variables let
+// the same program be run outside it for a local check.
+//
+// Deterministic by construction: the output is a byte-for-byte copy of the
+// input file, so two runs always produce identical bytes.
 
-import { copyFileSync, mkdirSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const BOT_DIR = process.env.MAKEFUN_BOT_DIR ?? '/bot';
-const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+// Resolve the two directories, honouring the grader's overrides first.
+const repoDir = process.env.MAKEFUN_BOT_DIR ?? '/bot';
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-mkdirSync(OUTPUT_DIR, { recursive: true });
+// Make sure the destination exists before writing into it.
+mkdirSync(outDir, { recursive: true });
+
+// Read the post address file, then write those exact bytes out again.
+// Any failure (missing file, unreadable directory) is fatal: report it on
+// stderr and exit non-zero so the grader knows the entry did not run.
+let postBytes: Buffer;
 try {
-  copyFileSync(join(BOT_DIR, 'POST.json'), join(OUTPUT_DIR, 'POST.json'));
+  postBytes = readFileSync(join(repoDir, 'POST.json'));
 } catch (err) {
-  console.error(`POST.json could not be copied from ${BOT_DIR}: ${(err as Error).message}`);
+  console.error(`Could not read POST.json in ${repoDir}: ${(err as Error).message}`);
+  process.exit(1);
+}
+
+try {
+  writeFileSync(join(outDir, 'POST.json'), postBytes);
+} catch (err) {
+  console.error(`Could not write POST.json into ${outDir}: ${(err as Error).message}`);
   process.exit(1);
 }

@@ -1,5 +1,9 @@
 # GTA 6: 13 Tahun vs 13 Menit — make.fun meme entry
 
+[![gta6-meme-x-01](https://make.fun/badge/gta6-meme-x-01.svg)](https://make.fun/bounty/gta6-meme-x-01)
+[![rank](https://make.fun/badge/gta6-meme-x-01/badboy0771/gta6-meme-x-01/rank.svg)](https://make.fun/bounty/gta6-meme-x-01)
+[![reward](https://make.fun/badge/gta6-meme-x-01/badboy0771/gta6-meme-x-01/reward.svg)](https://make.fun/bounty/gta6-meme-x-01)
+
 Entri untuk bounty make.fun **gta6-meme-x-01** ("Post a GTA 6 meme on X", total hadiah
 $500, deadline 23 Nov 2026 21:00 WIB). Akun make.fun: **@vivid-owl-21**, play code:
 `makefun-gerbil-violin-falconer`.
@@ -62,17 +66,17 @@ dan play code. Meme-nya sendiri diposting sebagai gambar pertama dari akun X pub
 
 ## Yang ada di repo ini
 
-- `main.ts` — program entri (starter, tidak diubah): menyalin `POST.json` ke
-  `/output/POST.json`. Dijalankan seperti grader dari working directory asing dan
-  lolos (exit 0, `out/POST.json` sama byte dengan `POST.json` repo).
-- `POST.json` — masih placeholder `{"url": "https://x.com/<handle>/status/<id>"}`.
-  Diisi alamat postingan X yang asli setelah Nanang memposting meme dari
-  @pejuangwor22; baru setelah itu entri bisa di-submit.
+- `main.ts` — program entri (ditulis ulang di fase ini): membaca `POST.json`
+  dari root repo lalu menulis byte yang sama persis ke `/output/POST.json`.
+  Dijalankan seperti grader dari working directory asing dan lolos (exit 0,
+  `out/POST.json` sama byte dengan `POST.json` repo).
+- `POST.json` — alamat postingan X yang asli:
+  `{"url": "https://x.com/pejuangwor22/status/2123439778221973968"}`.
 - `README.md` — dokumen ini.
 - `LICENSE` — MIT.
 
 ## Status
 
-Meme selesai (`meme.png`, 1024×1024) dan draft teks postingan siap. Menunggu:
-Nanang posting meme + teks di atas dari @pejuangwor22, lalu `POST.json` diisi URL
-postingannya dan entri di-submit oleh koordinator.
+Meme selesai (`meme.png`, 1024×1024) dan sudah LIVE di X dari @pejuangwor22:
+https://x.com/pejuangwor22/status/2123439778221973968 — `POST.json` sudah berisi
+URL postingan itu, dan entri siap di-submit oleh koordinator.
